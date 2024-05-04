@@ -8,16 +8,17 @@
   <title>Chatbot Website</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="sky-background">
   <div class="container">
     <div id="chatArea" class="chat-area">
       <!-- Chat messages will be displayed here -->
     </div>
     <div class="input-section">
-      <input type="text" id="userInput" placeholder="Type your message...">
-      <button id="sendButton">Send</button>
+      <input type="text" id="userInput" class="message-input" placeholder="Type a message...">
+      <button id="sendButton" class="send-button">Send</button>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
