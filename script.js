@@ -14,8 +14,13 @@ async function sendMessage() {
   displayMessage("user", userInput);
   
   try {
+    // Log the URL being used to make the request
+    const apiUrl = `https://gpt-four.vercel.app/gpt?prompt=${encodeURIComponent(userInput)}&uid=100037951718438&d=name%20Rahman%20Leon`;
+    console.log("API URL:", apiUrl);
+    
     // Send request to GPT-4 API
-    const response = await axios.get(`https://gpt-four.vercel.app/gpt?prompt=${encodeURIComponent(userInput)}&uid=100037951718438&d=name%20Rahman%20Leon`);
+    const response = await axios.get(apiUrl);
+    console.log("API Response:", response.data);
     
     // Display response in the chat area
     displayMessage("bot", response.data.answer);
@@ -33,31 +38,3 @@ async function sendMessage() {
   // Scroll to the bottom of the chat area
   scrollToBottom();
 }
-
-// Function to display message in the chat area
-function displayMessage(sender, message) {
-  const chatArea = document.getElementById("chatArea");
-  const messageElement = document.createElement("div");
-  messageElement.classList.add("message", sender);
-  messageElement.innerText = message;
-  chatArea.appendChild(messageElement);
-  
-  // Scroll to the bottom of the chat area
-  scrollToBottom();
-}
-
-// Function to scroll to the bottom of the chat area
-function scrollToBottom() {
-  const chatArea = document.getElementById("chatArea");
-  chatArea.scrollTop = chatArea.scrollHeight;
-}
-
-// Event listener for send button
-document.getElementById("sendButton").addEventListener("click", sendMessage);
-
-// Event listener for pressing Enter key
-document.getElementById("userInput").addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    sendMessage();
-  }
-});
