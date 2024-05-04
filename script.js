@@ -1,40 +1,24 @@
 // script.js
 
-// Function to send user message to chat
-async function sendMessage() {
-  // Get user input message
-  const userInput = document.getElementById("userInput").value.trim();
+function updateTime() {
+  const timeElement = document.getElementById('time');
+  const currentTime = new Date();
+  const options = { timeZone: 'Asia/Dhaka', hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+  const timeString = new Intl.DateTimeFormat('en-US', options).format(currentTime);
+  timeElement.textContent = timeString;
   
-  // Check if user input is empty
-  if (!userInput) {
-    return; // Don't send empty messages
+  const currentHour = currentTime.getHours();
+  const container = document.querySelector('.container');
+  if (currentHour >= 5 && currentHour < 12) {
+    container.className = 'container morning';
+  } else if (currentHour >= 12 && currentHour < 17) {
+    container.className = 'container noon';
+  } else if (currentHour >= 17 && currentHour < 20) {
+    container.className = 'container evening';
+  } else {
+    container.className = 'container night';
   }
-  
-  // Display user message in the chat area
-  displayMessage("user", userInput);
-  
-  try {
-    // Log the URL being used to make the request
-    const apiUrl = `https://gpt-four.vercel.app/gpt?prompt=${encodeURIComponent(userInput)}&uid=100037951718438&d=name%20Rahman%20Leon`;
-    console.log("API URL:", apiUrl);
-    
-    // Send request to GPT-4 API
-    const response = await axios.get(apiUrl);
-    console.log("API Response:", response.data);
-    
-    // Display response in the chat area
-    displayMessage("bot", response.data.answer);
-  } catch (error) {
-    console.error("Error:", error.message);
-    displayMessage("bot", "An error occurred while fetching response.");
-  }
-  
-  // Clear the input field after sending message
-  document.getElementById("userInput").value = "";
-  
-  // Show the send button
-  document.getElementById("sendButton").style.display = "inline-block";
-  
-  // Scroll to the bottom of the chat area
-  scrollToBottom();
 }
+
+updateTime();
+setInterval(updateTime, 1000);
