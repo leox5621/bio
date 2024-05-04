@@ -23,11 +23,13 @@ body {
 
 h1, h2 {
   color: #333;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
 }
 
 p {
   color: #666;
   line-height: 1.6;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
 }
 
 .morning {
@@ -43,5 +45,5 @@ p {
 }
 
 .night {
-  background-image: url('https://tinyurl.com/29kszwdg');
+  background-image: url('https://tinyurl.com/2dndkr7y');
 }
