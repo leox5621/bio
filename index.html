@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahman Leon - Personal Bio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+    .name {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .about-me {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile">
+    <img src="default_fb_picture.jpg" alt="Profile Picture">
+    <div>
+      <div class="name">Rahman Leon</div>
+      <div>Location: Bangladesh (GMT+6)</div>
+      <div>Current Time: <span id="current-time"></span></div>
+      <div>FB profile: <a href="https://www.facebook.com/Le0nRahaman">https://www.facebook.com/Le0nRahaman</a></div>
+      <div>Number: ********877999</div>
+    </div>
+  </div>
+  <div class="about-me">
+    <h2>About Me</h2>
+    <p>Add your detailed bio here.</p>
+  </div>
+
+  <script>
+    // Function to display current time in Bangladesh
+    function updateTime() {
+      const now = new Date();
+      const options = { timeZone: 'Asia/Dhaka', hour12: false };
+      const formattedTime = now.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', ...options });
+      document.getElementById('current-time').textContent = formattedTime;
+    }
+
+    // Update time every second
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
