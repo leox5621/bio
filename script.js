@@ -45,7 +45,7 @@ h1, h2, p {
 }
 
 .night {
-  background-image: url('https://tinyurl.com/2dndkr7y'); /* Replace with the night image URL */
+  background-image: url('https://tinyurl.com/27qy6djx'); /* Replace with the night image URL */
 }
 
 .footer {
