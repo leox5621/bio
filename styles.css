@@ -21,29 +21,36 @@ body {
   margin-bottom: 20px;
 }
 
-h1, h2 {
+h1, h2, p {
   color: #333;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add text shadow for better readability */
 }
 
-p {
-  color: #666;
-  line-height: 1.6;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+.morning, .noon, .evening, .night {
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
+  background-size: cover; /* Cover the entire container with the background image */
 }
 
 .morning {
-  background-image: url('https://tinyurl.com/236kum8f');
+  background-image: url('https://tinyurl.com/236kum8f'); /* Replace with your morning image URL */
 }
 
 .noon {
-  background-image: url('https://tinyurl.com/23napmab');
+  background-image: url('https://tinyurl.com/23napmab'); /* Replace with your noon image URL */
 }
 
 .evening {
-  background-image: url('https://tinyurl.com/29bm9sm3');
+  background-image: url('https://tinyurl.com/29bm9sm3'); /* Replace with your evening image URL */
 }
 
 .night {
-  background-image: url('https://tinyurl.com/2dndkr7y');
+  background-image: url('https://tinyurl.com/2dndkr7y'); /* Replace with your night image URL */
+}
+
+.footer {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: #666;
 }
