@@ -1,24 +1,37 @@
 // Function to get the current time in Bangladesh time zone
 function getBangladeshTime() {
-    // Get the current time in UTC
     const now = new Date();
-
-    // Set the time zone to Bangladesh time (GMT+6)
     const options = { timeZone: 'Asia/Dhaka' };
-    const bdTime = now.toLocaleString('en-US', options);
-
-    return bdTime;
+    return now.toLocaleString('en-US', options);
 }
 
-// Function to update the time every second
+// Function to set background image and greeting based on time
+function setBackgroundAndGreeting() {
+    const currentHour = new Date().getHours();
+    let timeOfDay, greeting;
+    if (currentHour >= 5 && currentHour < 12) {
+        timeOfDay = 'morning';
+        greeting = 'Good morning 🌅';
+    } else if (currentHour >= 12 && currentHour < 18) {
+        timeOfDay = 'noon';
+        greeting = 'Good afternoon ☀️';
+    } else if (currentHour >= 18 && currentHour < 20) {
+        timeOfDay = 'evening';
+        greeting = 'Good evening 🌆';
+    } else {
+        timeOfDay = 'night';
+        greeting = 'Good night 🌙';
+    }
+    document.querySelector('.container').classList = `container ${timeOfDay}`;
+    document.getElementById('greeting').textContent = greeting;
+}
+
+// Function to update the Bangladesh time every second
 function updateTime() {
-    // Get the current Bangladesh time
-    const bdTime = getBangladeshTime();
-
-    // Display the Bangladesh time
-    document.getElementById('bd-time').textContent = `Bangladesh Time: ${bdTime}`;
+    document.getElementById('bd-time').textContent = `Bangladesh Time: ${getBangladeshTime()}`;
 }
 
-// Call the updateTime function initially and then every second to keep the time updated
-updateTime();
-setInterval(updateTime, 1000);
+// Call the setBackgroundAndGreeting function initially and every minute to update based on the time
+setBackgroundAndGreeting();
+setInterval(setBackgroundAndGreeting, 60000); // Update every minute
+setInterval(updateTime, 1000); // Update time every second
